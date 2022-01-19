@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import "./index.css";
+import { frases } from "./data";
 function App() {
+  const [id, setId] = React.useState(0);
+  function randomNumber(min, max) {
+    const r = Math.random() * (max - min);
+    return Math.floor(r);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <div id="container">
+      <div id="quote-box">
+        <p id="text">{frases[id].frase}</p>
+        <p id="author">{frases[id].autor}</p>
+        <button id="new-quote" onClick={() => setId(randomNumber(1, 29))}>
+          Nueva frase
+        </button>
+        <a href="https://twitter.com" id="tweet-quote">
+          Twitter
         </a>
-      </header>
+      </div>
     </div>
   );
 }
